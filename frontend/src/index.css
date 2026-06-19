@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --color-glass-white: rgba(255, 255, 255, 0.08);
+  --color-glass-dark: rgba(15, 23, 42, 0.45);
+  
+  --font-sans: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+
+  --animate-gradient-shift: gradient-shift 15s ease infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow 2s ease-in-out infinite;
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes glow {
+    0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.2)); }
+    50% { opacity: 1; filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.6)); }
+  }
+}
+
+/* Base styles override */
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.08) 50%, rgba(15, 23, 42, 0.02) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+body.dark {
+  background: radial-gradient(circle at 10% 20%, rgba(30, 27, 75, 0.8) 0%, rgba(17, 24, 39, 0.95) 50%, rgba(3, 7, 18, 1) 100%);
+  color: #f3f4f6;
+}
+
+body.light {
+  background: radial-gradient(circle at 10% 20%, rgba(224, 231, 255, 0.6) 0%, rgba(243, 244, 246, 0.8) 50%, rgba(255, 255, 255, 1) 100%);
+  color: #1f2937;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.5);
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background-color: transparent !important;
+  font-family: inherit;
+}
+
+.dark .leaflet-tile {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+/* Glassmorphism utility classes */
+.glass-panel {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dark .glass-panel {
+  background-color: rgba(15, 23, 42, 0.45);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.light .glass-panel {
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.glass-input {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.dark .glass-input {
+  color: #f3f4f6;
+}
+
+.light .glass-input {
+  color: #1f2937;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.glass-input:focus {
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.glass-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+}
+
+.dark .glass-card:hover {
+  box-shadow: 0 12px 24px -10px rgba(99, 102, 241, 0.25);
+}
+
+.light .glass-card:hover {
+  box-shadow: 0 12px 24px -10px rgba(99, 102, 241, 0.15);
+}

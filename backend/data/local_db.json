@@ -1,0 +1,35 @@
+{
+  "favorites": [],
+  "searchHistory": [
+    {
+      "_id": "1781191611830",
+      "query": "delhi",
+      "lat": 28.65195,
+      "lon": 77.23149,
+      "country": "India",
+      "timestamp": "2026-06-11T15:26:51.830Z"
+    },
+    {
+      "_id": "1781191611252",
+      "query": "mumbai",
+      "lat": 19.07283,
+      "lon": 72.88261,
+      "country": "India",
+      "timestamp": "2026-06-11T15:26:51.252Z"
+    }
+  ],
+  "chatHistory": [
+    {
+      "_id": "1781191662049",
+      "role": "user",
+      "content": "Will it rain tomorrow?",
+      "timestamp": "2026-06-11T15:27:42.049Z"
+    },
+    {
+      "_id": "1781191662068",
+      "role": "assistant",
+      "content": "Yes, there is a high chance of rain in **Delhi** tomorrow (87% probability). I highly recommend bringing an umbrella or wearing a waterproof jacket if you're heading out.",
+      "timestamp": "2026-06-11T15:27:42.068Z"
+    }
+  ]
+}
