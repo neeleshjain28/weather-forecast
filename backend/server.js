@@ -28,6 +28,17 @@ app.use('/api/favorites', favoritesRouter);
 app.use('/api/history', historyRouter);
 app.use('/api/chat', chatRouter);
 
+// Serve frontend static files in production
+if (process.env.NODE_ENV === 'production') {
+  const path = require('path');
+  const frontendDist = path.join(__dirname, '..', 'frontend', 'dist');
+  app.use(express.static(frontendDist));
+  // All other GET requests should return the index.html (for client-side routing)
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendDist, 'index.html'));
+  });
+}
+
 // Global Error Handler
 app.use((err, req, res, next) => {
   console.error('Unhandled Error:', err);

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: uptowheather
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build:frontend
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: MONGODB_URI
+        sync: false
